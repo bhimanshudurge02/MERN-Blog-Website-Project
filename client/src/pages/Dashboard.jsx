@@ -5,10 +5,10 @@ import DashProfile from '../components/DashProfile'
 
 export default function Dashboard() {
   const location = useLocation();
-  const [tab, setTab] = useState('')
+  const [tab, setTab] = useState('');
   useEffect(() => {
     const urlParams = new URLSearchParams(location.search)
-    const tabFromUrl = urlParams.get('tab')
+    const tabFromUrl = urlParams.get('tab');
     if(tabFromUrl){
       setTab(tabFromUrl);
     };
@@ -19,10 +19,8 @@ export default function Dashboard() {
         {/* {Sidebar} */}
         <DashSidebar/>
       </div>
-      <div className="">
         {/* {profile ...} */}
         {tab === 'profile' && <DashProfile/>}
-      </div>
     </div>
-  )
+  );
 }
