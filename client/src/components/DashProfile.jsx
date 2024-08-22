@@ -18,7 +18,7 @@ export default function DashProfile() {
     const [imageFileUploading, setImageFileUploading] = useState(false);
     const [updateUserSuccess, setUpdateUserSuccess] = useState(null);
     const [updateUserError, setUpdateUserError] = useState(null);
-    const [showModal, setshowModal] = useState(false);
+    const [showModal, setShowModal] = useState(false);
     const [formData, setFormData] = useState({});
     const filePickerRef = useRef();
     const dispatch = useDispatch();
@@ -214,7 +214,7 @@ export default function DashProfile() {
                 }
             </form>
             <div className="text-red-500 flex justify-between mt-5">
-                <span onClick={()=>setshowModal(true)} className="cursor-pointer">Delete Account</span>
+                <span onClick={()=>setShowModal(true)} className="cursor-pointer">Delete Account</span>
                 <span onClick={handleSignout} className="cursor-pointer">Sign Out</span>
             </div>
             {updateUserSuccess && (
@@ -232,7 +232,7 @@ export default function DashProfile() {
                     {updateUserError}
                 </Alert>
             )}
-            <Modal show={showModal} onClose={()=> setshowModal(false)} popup size='md'>
+            <Modal show={showModal} onClose={()=> setShowModal(false)} popup size='md'>
                 <Modal.Header/>
                 <Modal.Body>
                     <div className="text-center">
@@ -242,7 +242,7 @@ export default function DashProfile() {
                             <Button color='failure' onClick={handleDeleteUser}>
                                 Yes, I'm sure
                             </Button>
-                            <Button color='gray' onClick={()=> setshowModal(false)}>
+                            <Button color='gray' onClick={()=> setShowModal(false)}>
                                 No,cancel
                             </Button>
                         </div>
