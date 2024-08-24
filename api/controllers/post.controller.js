@@ -1,4 +1,5 @@
 import Post from "../models/post.model.js";
+import Comment from "../models/comment.model.js";
 import { errorHandler } from "../utils/error.js";
 
 export const create = async (req, res, next) => {
@@ -81,6 +82,7 @@ export const deletepost = async (req, res, next) => {
   }
   try {
     await Post.findByIdAndDelete(req.params.postId);
+    await Comment.findByIdAndDelete(req.params.postId);
     res.status(200).json("The post has been deleted");
   } catch (error) {
     next(error);

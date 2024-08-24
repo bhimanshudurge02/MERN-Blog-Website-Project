@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Comment from "./Comment";
 import { HiOutlineExclamationCircle } from "react-icons/hi";
 
-export default function CommentSection({ postId }) {
+export default function CommentSection({ postId,postTitle }) {
   const { currentUser } = useSelector((state) => state.user);
   const [comment, setComment] = useState("");
   const [commentError, setCommentError] = useState(null);
@@ -13,6 +13,8 @@ export default function CommentSection({ postId }) {
   const [showModal, setShowModal] = useState(false);
   const [commentToDelete, setCommentToDelete] = useState(null);
   const navigate = useNavigate();
+
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -29,9 +31,13 @@ export default function CommentSection({ postId }) {
           content: comment,
           postId,
           userId: currentUser._id,
+          username: currentUser.username,
+          title: postTitle,
         }),
       });
       const data = await res.json();
+      console.log(data);
+      
       if (res.ok) {
         setComment("");
         setCommentError(null);
